@@ -1,4 +1,5 @@
 import { useTheme } from 'next-themes';
+import ChatStarter from './chats/chat-starter';
 
 import {
   RiMessage3Line,
@@ -44,11 +45,9 @@ export default function SideBar() {
         </label>
       </form>
 
-      <form className="px-5 pt-3">
-        <button type="button" className="btn btn-block">
-          Start a New Chat
-        </button>
-      </form>
+      <div className="px-5 pt-3">
+        <ChatStarter />
+      </div>
     </div>
   );
 }
