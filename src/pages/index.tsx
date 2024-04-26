@@ -1,3 +1,9 @@
+import MainLayout from '@/components/layouts/main-layout';
+
 export default function IndexPage() {
-  return <div></div>;
+  return (
+    <MainLayout>
+      <div></div>
+    </MainLayout>
+  );
 }
