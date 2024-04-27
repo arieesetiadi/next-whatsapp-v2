@@ -6,8 +6,7 @@ import GuestGuard from '@/components/guards/guest-guard';
 export default function LoginPage() {
   async function handleLogin() {
     try {
-      const result = await signInWithPopup(auth, provider);
-      console.log({ result });
+      await signInWithPopup(auth, provider);
     } catch (error) {
       console.info(error);
     }
