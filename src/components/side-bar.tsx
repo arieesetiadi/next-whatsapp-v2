@@ -1,5 +1,7 @@
-import { useTheme } from 'next-themes';
 import ChatStarter from './chats/chat-starter';
+import { useTheme } from 'next-themes';
+import { signOut } from 'firebase/auth';
+import { auth } from '@/apps/firebase';
 
 import {
   RiMessage3Line,
@@ -32,9 +34,18 @@ export default function SideBar() {
             <RiMessage3Line />
           </button>
 
-          <button className="btn btn-circle">
-            <RiMenu3Line />
-          </button>
+          <div className="dropdown dropdown-right">
+            <button tabIndex={0} role="button" className="btn btn-circle">
+              <RiMenu3Line />
+            </button>
+            <ul
+              tabIndex={0}
+              className="menu dropdown-content z-[1] ml-2 w-52 rounded-box bg-base-100 p-2 shadow">
+              <li>
+                <a onClick={async () => await signOut(auth)}>Logout</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
