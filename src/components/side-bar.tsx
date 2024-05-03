@@ -1,4 +1,5 @@
 import ChatStarter from './chats/chat-starter';
+import ThemeVariant from '@/enums/theme.enum';
 import { useTheme } from 'next-themes';
 import { signOut } from 'firebase/auth';
 import { auth } from '@/apps/firebase';
@@ -23,9 +24,15 @@ export default function SideBar() {
           </div>
 
           <button
-            onClick={() => setTheme(theme == 'light' ? 'dark' : 'light')}
+            onClick={() =>
+              setTheme(
+                theme == ThemeVariant.LIGHT
+                  ? ThemeVariant.DARK
+                  : ThemeVariant.LIGHT,
+              )
+            }
             className="btn btn-circle">
-            {theme == 'light' ? <RiContrast2Line /> : <RiSunLine />}
+            {theme == ThemeVariant.LIGHT ? <RiContrast2Line /> : <RiSunLine />}
           </button>
         </div>
 
