@@ -1,18 +1,17 @@
 import { useState, useRef } from 'react';
-import { auth, db } from '@/apps/firebase';
+import { auth, chatsCollectionRef } from '@/apps/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useCollection } from 'react-firebase-hooks/firestore';
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc } from 'firebase/firestore';
 
 export default function ChatStarter() {
-  const chatCollectionRef = collection(db, 'chats');
   const closeModalButtonRef = useRef(null);
 
   const [email, setEmail] = useState<string>('');
   const [error, setError] = useState<string>('');
 
   const [user] = useAuthState(auth);
-  const [chatCollection] = useCollection(chatCollectionRef);
+  const [chatCollection] = useCollection(chatsCollectionRef);
 
   const handleStartChat = async (e: any) => {
     e.preventDefault();
@@ -27,7 +26,7 @@ export default function ChatStarter() {
       return;
     }
 
-    await addDoc(chatCollectionRef, {
+    await addDoc(chatsCollectionRef, {
       users: [user?.email, email],
     });
 
