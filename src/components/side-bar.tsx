@@ -20,7 +20,7 @@ export default function SideBar() {
   });
 
   return (
-    <div className="max-w-lg md:max-w-sm">
+    <>
       <div className="flex items-center justify-between p-5">
         <div className="dropdown dropdown-right">
           <div tabIndex={0} role="button" className="avatar btn-circle gap-2">
@@ -67,6 +67,6 @@ export default function SideBar() {
       <div className="px-5 pt-3">
         {userChats?.map((chat) => <ChatItem key={chat.id} id={chat.id} userEmails={chat.data().users} />)}
       </div>
-    </div>
+    </>
   );
 }
